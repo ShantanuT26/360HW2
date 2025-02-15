@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+// This class handles displaying a question's details and allowing users to answer.
 public class QuestionDetailPage {
     private Question question;
 
@@ -24,7 +25,7 @@ public class QuestionDetailPage {
         Label bodyLabel = new Label(question.getBody());
         bodyLabel.setStyle("-fx-font-size: 14px;");
 
-        // Answer Input
+        // Answer input field.
         TextArea answerInput = new TextArea();
         answerInput.setPromptText("Write your answer...");
         answerInput.setWrapText(true);
@@ -34,11 +35,11 @@ public class QuestionDetailPage {
             String answerText = answerInput.getText().trim();
             if (!answerText.isEmpty()) {
                 question.addAnswer(answerText);
-                show(primaryStage); // Refresh the page to display the new answer
+                show(primaryStage); // Refresh the page to display the new answer.
             }
         });
 
-        // Display all answers
+        // Display all answers.
         VBox answersBox = new VBox(5);
         for (String answer : question.getAnswers()) {
             Label answerLabel = new Label(answer);

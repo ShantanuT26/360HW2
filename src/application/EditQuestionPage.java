@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+// This class handles editing an existing question.
 public class EditQuestionPage {
     private Question question;
     private QuestionListPage questionListPage;
@@ -20,13 +21,16 @@ public class EditQuestionPage {
         VBox layout = new VBox(10);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
 
+        // Input field for updating the question title.
         TextField titleInput = new TextField(question.getTitle());
         titleInput.setPromptText("Edit question title...");
 
+        // Input field for updating the question body.
         TextArea bodyInput = new TextArea(question.getBody());
         bodyInput.setPromptText("Edit your question...");
         bodyInput.setWrapText(true);
 
+        // Button to save the updated question.
         Button updateButton = new Button("Update Question");
         updateButton.setOnAction(e -> {
             String newTitle = titleInput.getText().trim();
@@ -34,10 +38,11 @@ public class EditQuestionPage {
             if (!newTitle.isEmpty() && !newBody.isEmpty()) {
                 question.setTitle(newTitle);
                 question.setBody(newBody);
-                questionListPage.show(primaryStage); // Refresh the list
+                questionListPage.show(primaryStage); // Refresh the question list
             }
         });
 
+        // Button to cancel and return to the question list.
         Button cancelButton = new Button("Cancel");
         cancelButton.setOnAction(e -> questionListPage.show(primaryStage));
 
